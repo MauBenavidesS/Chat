@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+Chat\out\build\x64-debug\*
+Chat\out\build\x64-Release\*
