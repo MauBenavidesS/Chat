@@ -10,11 +10,8 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 
 # TODO: Add tests and install targets if needed.
-find_package(Vulkan REQUIRED)
-target_link_libraries(Chat PRIVATE Vulkan::Vulkan)
-
 find_package(glfw3 CONFIG REQUIRED)
-target_link_libraries(Chat PRIVATE glfw)
+target_link_libraries(Chat PRIVATE glfw opengl32)
 
 find_package(imgui CONFIG REQUIRED)
 target_link_libraries(Chat PRIVATE imgui::imgui)

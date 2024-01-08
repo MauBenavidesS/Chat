@@ -1,5 +1,5 @@
 {
 	"name": "chat",
 	"version": "1.0",
-	"dependencies": [ "imgui", "glfw3", "vulkan" ]
+	"dependencies": [ "imgui", "glfw3" ]
 }
