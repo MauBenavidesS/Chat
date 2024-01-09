@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.12)
 project(Chat)
 
 # Add source to this project's executable.
-add_executable(Chat "Chat.cpp" "imgui_impl/imgui_impl_opengl3.cpp" "imgui_impl/imgui_impl_glfw.cpp")
+add_executable(Chat "Chat.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
     set_property(TARGET Chat PROPERTY CXX_STANDARD 20)
