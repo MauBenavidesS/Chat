@@ -1,5 +1,12 @@
 {
 	"name": "chat",
 	"version": "1.0",
-	"dependencies": [ "imgui", "glfw3" ]
+	"dependencies": [
+		{
+			"name": "imgui",
+			"features": [ "glfw-binding", "opengl3-binding" ]
+		},
+			"glfw3",
+			"glad"
+	]
 }
