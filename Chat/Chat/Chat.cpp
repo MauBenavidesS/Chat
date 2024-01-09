@@ -2,6 +2,8 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
+using namespace std;
+
 int main(void) 
 {
 	// Setup window
@@ -33,6 +35,7 @@ int main(void)
 	myimgui.Init(window, glsl_version);
 	while (!glfwWindowShouldClose(window)) {
 		glfwPollEvents();
+		myimgui.NewFrame();
 		myimgui.Update();
 		myimgui.Render();
 		glfwSwapBuffers(window);
