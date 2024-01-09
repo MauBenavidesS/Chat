@@ -35,6 +35,10 @@ int main(void)
 	myimgui.Init(window, glsl_version);
 	while (!glfwWindowShouldClose(window)) {
 		glfwPollEvents();
+
+		glClearColor(0.45f, 0.55f, 0.60f, 1.00f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		myimgui.NewFrame();
 		myimgui.Update();
 		myimgui.Render();
