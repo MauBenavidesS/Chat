@@ -30,6 +30,8 @@ void UseImGui::NewFrame()
 
 void UseImGui::Update()
 {
+	ImGuiIO& io = ImGui::GetIO();
+
 	ImGui::Begin("Chat++");
 	ImGui::End();
 
@@ -56,10 +58,9 @@ void UseImGui::Update()
 		ImGui::SameLine();
 		ImGui::Text("counter = %d", counter);
 
-		//ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 		ImGui::End();
 	}
-
 
 }
 
