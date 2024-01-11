@@ -53,6 +53,15 @@ int main(void)
 			glfwMakeContextCurrent(backup_current_context);
 		}
 
+		// When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to regular ones.
+		ImGuiStyle& style = ImGui::GetStyle();
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			style.WindowRounding = 10.0f;
+			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+		}
+
+
 		glfwSwapBuffers(window);
 	}
 	myimgui.Shutdown();
