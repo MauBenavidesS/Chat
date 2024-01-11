@@ -34,6 +34,8 @@ int main(void)
 	UseImGui myimgui;
 	myimgui.Init(window, glsl_version);
 	while (!glfwWindowShouldClose(window)) {
+		ImGuiIO& io = ImGui::GetIO();
+
 		glfwPollEvents();
 
 		glClearColor(0.45f, 0.55f, 0.60f, 1.00f);
@@ -42,6 +44,15 @@ int main(void)
 		myimgui.NewFrame();
 		myimgui.Update();
 		myimgui.Render();
+
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			GLFWwindow* backup_current_context = glfwGetCurrentContext();
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
+			glfwMakeContextCurrent(backup_current_context);
+		}
+
 		glfwSwapBuffers(window);
 	}
 	myimgui.Shutdown();
