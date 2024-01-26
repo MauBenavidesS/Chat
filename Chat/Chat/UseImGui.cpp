@@ -1,5 +1,6 @@
 #include "UseImGui.h"
 #include <algorithm>
+#include <vector>
 
 // Our state
 bool show_demo_window = true;
@@ -7,7 +8,9 @@ bool show_another_window = false;
 ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
 const int MaxMessages = 100;
-char messages[MaxMessages][256];
+const int MinCharacter = 1;
+std::vector<std::vector<char>> messages;
+//char messages[MaxMessages][256];
 int messageCount = 0;
 char inputBuffer[256] = "";
 
@@ -48,25 +51,29 @@ void UseImGui::Update()
 
 	// Display chat messages
 	for (int i = 0; i < messageCount; ++i) {
-		ImGui::TextWrapped("%s", messages[i]);
+		ImGui::TextWrapped("%s", messages[i].data());
 	}
 
 	ImGui::EndChild();
 	ImGui::Separator();
 
 	// Input box
+	ImGui::SetItemDefaultFocus();
 	ImGui::InputText("##Input", inputBuffer, IM_ARRAYSIZE(inputBuffer));
 	ImGui::SameLine();
+	
 
 	// Send button
-	if (ImGui::Button("Send") && messageCount < MaxMessages) {
+	if ((ImGui::Button("Send") || ImGui::IsKeyPressed(ImGuiKey_Enter)) && messageCount < MaxMessages && strlen(inputBuffer) >= MinCharacter) {
 		// Shift existing messages up
-		for (int i = MaxMessages - 1; i > 0; --i) {
+		/*for (int i = MaxMessages - 1; i > 0; --i) {
 			strcpy_s(messages[i], messages[i - 1]);
-		}
+		}*/
 
 		// Add the new message at the bottom
-		strcpy_s(messages[0], inputBuffer);
+		//strcpy_s(messages[0], inputBuffer);
+		std::vector<char> messageVector(std::begin(inputBuffer), std::end(inputBuffer));
+		messages.push_back(messageVector);
 
 		// Increment message count if not at maximum
 		messageCount = std::min(messageCount + 1, MaxMessages);
@@ -74,37 +81,9 @@ void UseImGui::Update()
 		// Clear the input box
 		inputBuffer[0] = '\0';
 	}
+	
 
-	ImGui::End();
-
-
-	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
-	if (show_demo_window)
-		ImGui::ShowDemoWindow(&show_demo_window);
-
-	// 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
-	{
-		static float f = 0.0f;
-		static int counter = 0;
-
-		ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
-		ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-		ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-		ImGui::Checkbox("Another Window", &show_another_window);
-
-		ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-		ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-			counter++;
-		ImGui::SameLine();
-		ImGui::Text("counter = %d", counter);
-
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-		ImGui::End();
-	}
-
+	ImGui::End();	
 }
 
 void UseImGui::Render()
