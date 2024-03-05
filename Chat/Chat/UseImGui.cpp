@@ -1,15 +1,11 @@
 #include "UseImGui.h"
+#include "ChatApp.h"
 #include <algorithm>
 
 // Our state
 bool show_demo_window = true;
 bool show_another_window = false;
 ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
-const int MaxMessages = 100;
-char messages[MaxMessages][256];
-int messageCount = 0;
-char inputBuffer[256] = "";
 
 void UseImGui::Init(GLFWwindow* window, const char* glsl_version)
 {
@@ -41,42 +37,8 @@ void UseImGui::Update()
 {
 	ImGuiIO& io = ImGui::GetIO();
 
-	ImGui::Begin("Chat++", NULL, ImGuiWindowFlags_NoCollapse);
-	//ImGui::SetWindowSize(ImVec2(400, 300));
-	//ImGui::SetWindowPos(ImVec2(100, 100));
-	ImGui::BeginChild("ChatLog", ImVec2(0, -ImGui::GetTextLineHeightWithSpacing() - 10));
-
-	// Display chat messages
-	for (int i = 0; i < messageCount; ++i) {
-		ImGui::TextWrapped("%s", messages[i]);
-	}
-
-	ImGui::EndChild();
-	ImGui::Separator();
-
-	// Input box
-	ImGui::InputText("##Input", inputBuffer, IM_ARRAYSIZE(inputBuffer));
-	ImGui::SameLine();
-
-	// Send button
-	if (ImGui::Button("Send") && messageCount < MaxMessages) {
-		// Shift existing messages up
-		for (int i = MaxMessages - 1; i > 0; --i) {
-			strcpy_s(messages[i], messages[i - 1]);
-		}
-
-		// Add the new message at the bottom
-		strcpy_s(messages[0], inputBuffer);
-
-		// Increment message count if not at maximum
-		messageCount = std::min(messageCount + 1, MaxMessages);
-
-		// Clear the input box
-		inputBuffer[0] = '\0';
-	}
-
-	ImGui::End();
-
+	// App's Entry Point
+	ChatApp();
 
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 	if (show_demo_window)
