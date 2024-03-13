@@ -34,9 +34,6 @@ void ChatApp(void) {
 
 	ImGui::Separator();
 
-	bool isMouseLeftPressed = ImGui::IsMouseDown(ImGuiMouseButton_Left);
-	bool isChatWindowFocused = ImGui::IsWindowFocused();
-
 	if (send || (ImGui::IsKeyPressed(ImGuiKey_Enter) && messageCount < MAX_MESSAGES&& strlen(inputBuffer) >= MIN_CHARACTER)) {
 		ImGui::SetKeyboardFocusHere();
 	}
