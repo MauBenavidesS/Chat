@@ -44,9 +44,7 @@ void ChatApp(void) {
 	ImGui::SameLine();
 	send = ImGui::Button("Send");
 	if ((send || ImGui::IsKeyPressed(ImGuiKey_Enter)) && messageCount < MAX_MESSAGES && strlen(inputBuffer) >= MIN_CHARACTER) {
-		printf("1. Send pressed. \n");
-		ImGuiID buttonID = ImGui::GetID("Send");
-		printf("Button ID: %u\n", buttonID);
+		//printf("1. Send pressed. \n");
 
 		// Add the new message at the bottom
 		std::string message(inputBuffer);
