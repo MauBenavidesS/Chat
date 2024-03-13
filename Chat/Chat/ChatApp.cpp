@@ -13,6 +13,7 @@ char inputBuffer[MAX_INPUT_LENGTH] = "";
 
 // Buttons
 static bool send = false;
+static bool messageSent = false;
 
 void ChatApp(void) {
 	ImGui::Begin("Chat++", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
@@ -21,6 +22,12 @@ void ChatApp(void) {
 	// Display chat messages
 	for (int i = 0; i < messageCount; ++i) {
 		ImGui::TextWrapped("%s", messages[i].data());
+	}
+
+	// Scroll down to see latest messages
+	if (messageSent) {
+		ImGui::SetScrollHereY(1.0f);
+		messageSent = false;
 	}
 	ImGui::EndChild();
 
@@ -50,6 +57,11 @@ void ChatApp(void) {
 
 		// Clear the input box
 		inputBuffer[0] = char(0);
+
+		// Scroll down to see latest messages
+		if (ImGui::GetScrollY() >= ImGui::GetScrollMaxY()) {
+			messageSent = true;
+		}
 	}
 
 	ImGui::End();
