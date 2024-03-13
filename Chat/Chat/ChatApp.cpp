@@ -27,8 +27,6 @@ void ChatApp(void) {
 
 	ImGui::Separator();
 
-	////// Check if the mouse is hovering over the specific child window
-	//bool hoveringOverChatLog = ImGui::IsWindowHovered(ImGuiHoveredFlags_ChildWindows);
 	bool isMouseLeftPressed = ImGui::IsMouseDown(ImGuiMouseButton_Left);
 	bool isChatWindowFocused = ImGui::IsWindowFocused();
 
@@ -53,22 +51,6 @@ void ChatApp(void) {
 		// Clear the input box
 		inputBuffer[0] = char(0);
 	}
-
-	//// Drag
-	////// 1. Detect Drag // 2. Know text position.
-	//bool isDragging0 = ImGui::IsMouseDragging(0, -1.0f);
-	//bool isDragging1 = ImGui::IsMouseDragging(1, -1.0f);
-	//bool isDragging2 = ImGui::IsMouseDragging(2, -1.0f);
-
-	//if (isDragging0) {
-	//	printf("0. Mouse is dragging. \n");
-	//}
-	//else if (isDragging1) {
-	//	printf("1. Mouse is dragging. \n");
-	//}
-	//else if (isDragging2) {
-	//	printf("2. Mouse is dragging. \n");
-	//}
 
 	ImGui::End();
 }
