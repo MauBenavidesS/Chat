@@ -6,8 +6,7 @@
 			"name": "imgui",
 			"features": [ "docking-experimental", "glfw-binding", "opengl3-binding" ]
 		},
-		"glfw3",
-		"glad",
-		"websocketpp"
+			"glfw3",
+			"glad"
 	]
 }
