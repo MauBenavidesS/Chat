@@ -6,7 +6,12 @@
 			"name": "imgui",
 			"features": [ "docking-experimental", "glfw-binding", "opengl3-binding" ]
 		},
-			"glfw3",
-			"glad"
+		"glfw3",
+		"glad",
+		"websocketpp",
+		"boost-asio",
+		"openssl",
+		"zlib",
+		"boost-random"
 	]
 }

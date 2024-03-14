@@ -20,6 +20,11 @@
           "name": "GLFW3_DIR",
           "value": "C:/vcpkg/packages/glfw3_x64-windows/share/glfw",
           "type": "PATH"
+        },
+        {
+          "name": "Boost_DIR",
+          "value": "C:/Users/juanp/Desktop/Mauricio/10. Github/Chat/Chat/out/build/x64-Debug/vcpkg_installed/x64-windows/include/boost",
+          "type": "PATH"
         }
       ]
     },
