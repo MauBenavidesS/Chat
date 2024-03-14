@@ -1,6 +1,5 @@
+#include "Application.h"
 #include "UseImGui.h"
-#include "WebSocketSend.h"
-#include "ChatApp.h"
 #include <algorithm>
 
 // Our state
@@ -39,8 +38,7 @@ void UseImGui::Update()
 	ImGuiIO& io = ImGui::GetIO();
 
 	// App's Entry Point
-	ChatApp();
-	WebSocketSend();
+	Application();
 
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
 	if (show_demo_window)
