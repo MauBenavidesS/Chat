@@ -1,7 +1,7 @@
 ﻿cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_executable (Chat "InitGUI.cpp"  "UseImGui.cpp" "UseImGui.h" "ChatApp.cpp" "ChatApp.h" "WebSocketSend.cpp" "WebSocketSend.h" "Application.cpp" "Application.h")
+add_executable (Chat "InitGUI.cpp"  "UseImGui.cpp" "UseImGui.h" "ChatApp.cpp" "ChatApp.h" "WebSocketClient.cpp" "WebSocketClient.h" "Application.cpp" "Application.h")
 
 # TODO: Add tests and install targets if needed.
 find_package(glad CONFIG REQUIRED)
@@ -21,3 +21,6 @@ target_link_libraries(Chat PRIVATE ZLIB::ZLIB)
 
 find_package(websocketpp CONFIG REQUIRED)
 target_link_libraries(Chat PRIVATE websocketpp::websocketpp)
+
+find_package(Boost REQUIRED COMPONENTS random)
+target_link_libraries(Chat PRIVATE Boost::boost Boost::random)

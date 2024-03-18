@@ -1,7 +1,7 @@
 #include "ChatApp.h"
-#include "WebSocketSend.h"
+#include "WebSocketClient.h"
 
 void Application(void) {
 	ChatApp();
-	WebSocketSend();
+	WebSocketClient();
 }
