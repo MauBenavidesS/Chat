@@ -1,7 +1,7 @@
 ﻿cmake_minimum_required (VERSION 3.8)
 
 # Add source to this project's executable.
-add_executable (Chat "InitGUI.cpp"  "UseImGui.cpp" "UseImGui.h" "ChatApp.cpp" "ChatApp.h" "WebSocketServer.cpp" "WebSocketServer.h" "Application.cpp" "Application.h" "WebSocketClient.cpp")
+add_executable (Chat "InitGUI.cpp"  "UseImGui.cpp" "UseImGui.h" "ChatApp.cpp" "ChatApp.h"   "Application.cpp" "Application.h" "WebSocketClient.cpp"  )
 
 # TODO: Add tests and install targets if needed.
 find_package(glad CONFIG REQUIRED)

@@ -1,5 +1,4 @@
 #include "ChatApp.h"
-#include "WebSocketServer.h"
 #include "WebSocketClient.h"
 
 int Mode = 0; // 0 for Server, 1 for Client
