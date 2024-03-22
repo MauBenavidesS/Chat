@@ -108,9 +108,7 @@ public:
     }
 
     void send_message(connection_metadata::ptr metadata, std::string message) {
-        printf("DEBUG. Inside Send Message function. \n");
         m_endpoint.send(metadata->get_hdl(), message, websocketpp::frame::opcode::text);
-        printf("DEBUG. m_endpoint.send() called... \n");
     }
 
     connection_metadata::ptr get_metadata(int id) const {
@@ -151,6 +149,7 @@ int WebSocketClient() {
                 << "\nCommand List:\n"
                 << "connect <ws uri>\n"
                 << "show <connection id>\n"
+                << "message <connection id>\n"
                 << "help: Display this help text\n"
                 << "quit: Exit the program\n"
                 << std::endl;
@@ -174,11 +173,11 @@ int WebSocketClient() {
         }
         else if (input.substr(0, 7) == "message") {
             int id = atoi(input.substr(8).c_str());
-            
+            std::string message = input.substr(10);
             connection_metadata::ptr metadata = endpoint.get_metadata(id);
             if (metadata) {
                 std::cout << *metadata << std::endl;
-                endpoint.send_message(metadata, "Hello World");
+                endpoint.send_message(metadata, message);
             }
             else {
                 std::cout << "> Unknown connection id " << id << std::endl;
